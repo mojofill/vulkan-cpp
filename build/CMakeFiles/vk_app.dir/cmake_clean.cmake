@@ -1,0 +1,41 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/vk_app.dir/src/engine/buffers.cpp.obj"
+  "CMakeFiles/vk_app.dir/src/engine/buffers.cpp.obj.d"
+  "CMakeFiles/vk_app.dir/src/engine/command_pool.cpp.obj"
+  "CMakeFiles/vk_app.dir/src/engine/command_pool.cpp.obj.d"
+  "CMakeFiles/vk_app.dir/src/engine/compute_pipeline.cpp.obj"
+  "CMakeFiles/vk_app.dir/src/engine/compute_pipeline.cpp.obj.d"
+  "CMakeFiles/vk_app.dir/src/engine/descriptors.cpp.obj"
+  "CMakeFiles/vk_app.dir/src/engine/descriptors.cpp.obj.d"
+  "CMakeFiles/vk_app.dir/src/engine/device.cpp.obj"
+  "CMakeFiles/vk_app.dir/src/engine/device.cpp.obj.d"
+  "CMakeFiles/vk_app.dir/src/engine/engine.cpp.obj"
+  "CMakeFiles/vk_app.dir/src/engine/engine.cpp.obj.d"
+  "CMakeFiles/vk_app.dir/src/engine/framebuffers.cpp.obj"
+  "CMakeFiles/vk_app.dir/src/engine/framebuffers.cpp.obj.d"
+  "CMakeFiles/vk_app.dir/src/engine/graphics_pipeline.cpp.obj"
+  "CMakeFiles/vk_app.dir/src/engine/graphics_pipeline.cpp.obj.d"
+  "CMakeFiles/vk_app.dir/src/engine/images.cpp.obj"
+  "CMakeFiles/vk_app.dir/src/engine/images.cpp.obj.d"
+  "CMakeFiles/vk_app.dir/src/engine/pipelines.cpp.obj"
+  "CMakeFiles/vk_app.dir/src/engine/pipelines.cpp.obj.d"
+  "CMakeFiles/vk_app.dir/src/engine/recorder.cpp.obj"
+  "CMakeFiles/vk_app.dir/src/engine/recorder.cpp.obj.d"
+  "CMakeFiles/vk_app.dir/src/engine/renderpass.cpp.obj"
+  "CMakeFiles/vk_app.dir/src/engine/renderpass.cpp.obj.d"
+  "CMakeFiles/vk_app.dir/src/engine/swapchain.cpp.obj"
+  "CMakeFiles/vk_app.dir/src/engine/swapchain.cpp.obj.d"
+  "CMakeFiles/vk_app.dir/src/engine/syncer.cpp.obj"
+  "CMakeFiles/vk_app.dir/src/engine/syncer.cpp.obj.d"
+  "CMakeFiles/vk_app.dir/src/main.cpp.obj"
+  "CMakeFiles/vk_app.dir/src/main.cpp.obj.d"
+  "libvk_app.dll.a"
+  "vk_app.exe"
+  "vk_app.exe.manifest"
+  "vk_app.pdb"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/vk_app.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()
