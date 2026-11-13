@@ -224,6 +224,30 @@ src/engine/images.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\vk_app.dir\build.make CMakeFiles/vk_app.dir/src/engine/images.cpp.s
 .PHONY : src/engine/images.cpp.s
 
+src/engine/recorder.obj: src/engine/recorder.cpp.obj
+.PHONY : src/engine/recorder.obj
+
+# target to build an object file
+src/engine/recorder.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\vk_app.dir\build.make CMakeFiles/vk_app.dir/src/engine/recorder.cpp.obj
+.PHONY : src/engine/recorder.cpp.obj
+
+src/engine/recorder.i: src/engine/recorder.cpp.i
+.PHONY : src/engine/recorder.i
+
+# target to preprocess a source file
+src/engine/recorder.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\vk_app.dir\build.make CMakeFiles/vk_app.dir/src/engine/recorder.cpp.i
+.PHONY : src/engine/recorder.cpp.i
+
+src/engine/recorder.s: src/engine/recorder.cpp.s
+.PHONY : src/engine/recorder.s
+
+# target to generate assembly for a file
+src/engine/recorder.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\vk_app.dir\build.make CMakeFiles/vk_app.dir/src/engine/recorder.cpp.s
+.PHONY : src/engine/recorder.cpp.s
+
 src/engine/resources.obj: src/engine/resources.cpp.obj
 .PHONY : src/engine/resources.obj
 
@@ -367,30 +391,6 @@ src/renderer/pipelines.s: src/renderer/pipelines.cpp.s
 src/renderer/pipelines.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\vk_app.dir\build.make CMakeFiles/vk_app.dir/src/renderer/pipelines.cpp.s
 .PHONY : src/renderer/pipelines.cpp.s
-
-src/renderer/recorder.obj: src/renderer/recorder.cpp.obj
-.PHONY : src/renderer/recorder.obj
-
-# target to build an object file
-src/renderer/recorder.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\vk_app.dir\build.make CMakeFiles/vk_app.dir/src/renderer/recorder.cpp.obj
-.PHONY : src/renderer/recorder.cpp.obj
-
-src/renderer/recorder.i: src/renderer/recorder.cpp.i
-.PHONY : src/renderer/recorder.i
-
-# target to preprocess a source file
-src/renderer/recorder.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\vk_app.dir\build.make CMakeFiles/vk_app.dir/src/renderer/recorder.cpp.i
-.PHONY : src/renderer/recorder.cpp.i
-
-src/renderer/recorder.s: src/renderer/recorder.cpp.s
-.PHONY : src/renderer/recorder.s
-
-# target to generate assembly for a file
-src/renderer/recorder.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\vk_app.dir\build.make CMakeFiles/vk_app.dir/src/renderer/recorder.cpp.s
-.PHONY : src/renderer/recorder.cpp.s
 
 src/renderer/renderer.obj: src/renderer/renderer.cpp.obj
 .PHONY : src/renderer/renderer.obj
@@ -581,6 +581,9 @@ help:
 	@echo ... src/engine/images.obj
 	@echo ... src/engine/images.i
 	@echo ... src/engine/images.s
+	@echo ... src/engine/recorder.obj
+	@echo ... src/engine/recorder.i
+	@echo ... src/engine/recorder.s
 	@echo ... src/engine/resources.obj
 	@echo ... src/engine/resources.i
 	@echo ... src/engine/resources.s
@@ -599,9 +602,6 @@ help:
 	@echo ... src/renderer/pipelines.obj
 	@echo ... src/renderer/pipelines.i
 	@echo ... src/renderer/pipelines.s
-	@echo ... src/renderer/recorder.obj
-	@echo ... src/renderer/recorder.i
-	@echo ... src/renderer/recorder.s
 	@echo ... src/renderer/renderer.obj
 	@echo ... src/renderer/renderer.i
 	@echo ... src/renderer/renderer.s

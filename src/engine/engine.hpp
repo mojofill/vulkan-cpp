@@ -14,6 +14,7 @@ private:
     Images images;
     Resources resources;
     Descriptors descriptors;
+    Recorder recorder;
     Renderer renderer;
 public:
     void init(VulkanContext *vko);

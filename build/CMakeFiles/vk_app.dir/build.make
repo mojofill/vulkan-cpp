@@ -206,11 +206,26 @@ CMakeFiles/vk_app.dir/src/engine/resources.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/vk_app.dir/src/engine/resources.cpp.s"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\henry\Desktop\graphics-projects\fluid-3d\src\engine\resources.cpp -o CMakeFiles\vk_app.dir\src\engine\resources.cpp.s
 
+CMakeFiles/vk_app.dir/src/engine/recorder.cpp.obj: CMakeFiles/vk_app.dir/flags.make
+CMakeFiles/vk_app.dir/src/engine/recorder.cpp.obj: CMakeFiles/vk_app.dir/includes_CXX.rsp
+CMakeFiles/vk_app.dir/src/engine/recorder.cpp.obj: C:/Users/henry/Desktop/graphics-projects/fluid-3d/src/engine/recorder.cpp
+CMakeFiles/vk_app.dir/src/engine/recorder.cpp.obj: CMakeFiles/vk_app.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\henry\Desktop\graphics-projects\fluid-3d\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/vk_app.dir/src/engine/recorder.cpp.obj"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vk_app.dir/src/engine/recorder.cpp.obj -MF CMakeFiles\vk_app.dir\src\engine\recorder.cpp.obj.d -o CMakeFiles\vk_app.dir\src\engine\recorder.cpp.obj -c C:\Users\henry\Desktop\graphics-projects\fluid-3d\src\engine\recorder.cpp
+
+CMakeFiles/vk_app.dir/src/engine/recorder.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/vk_app.dir/src/engine/recorder.cpp.i"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\henry\Desktop\graphics-projects\fluid-3d\src\engine\recorder.cpp > CMakeFiles\vk_app.dir\src\engine\recorder.cpp.i
+
+CMakeFiles/vk_app.dir/src/engine/recorder.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/vk_app.dir/src/engine/recorder.cpp.s"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\henry\Desktop\graphics-projects\fluid-3d\src\engine\recorder.cpp -o CMakeFiles\vk_app.dir\src\engine\recorder.cpp.s
+
 CMakeFiles/vk_app.dir/src/engine/engine.cpp.obj: CMakeFiles/vk_app.dir/flags.make
 CMakeFiles/vk_app.dir/src/engine/engine.cpp.obj: CMakeFiles/vk_app.dir/includes_CXX.rsp
 CMakeFiles/vk_app.dir/src/engine/engine.cpp.obj: C:/Users/henry/Desktop/graphics-projects/fluid-3d/src/engine/engine.cpp
 CMakeFiles/vk_app.dir/src/engine/engine.cpp.obj: CMakeFiles/vk_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\henry\Desktop\graphics-projects\fluid-3d\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/vk_app.dir/src/engine/engine.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\henry\Desktop\graphics-projects\fluid-3d\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/vk_app.dir/src/engine/engine.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vk_app.dir/src/engine/engine.cpp.obj -MF CMakeFiles\vk_app.dir\src\engine\engine.cpp.obj.d -o CMakeFiles\vk_app.dir\src\engine\engine.cpp.obj -c C:\Users\henry\Desktop\graphics-projects\fluid-3d\src\engine\engine.cpp
 
 CMakeFiles/vk_app.dir/src/engine/engine.cpp.i: cmake_force
@@ -225,7 +240,7 @@ CMakeFiles/vk_app.dir/src/renderer/renderer.cpp.obj: CMakeFiles/vk_app.dir/flags
 CMakeFiles/vk_app.dir/src/renderer/renderer.cpp.obj: CMakeFiles/vk_app.dir/includes_CXX.rsp
 CMakeFiles/vk_app.dir/src/renderer/renderer.cpp.obj: C:/Users/henry/Desktop/graphics-projects/fluid-3d/src/renderer/renderer.cpp
 CMakeFiles/vk_app.dir/src/renderer/renderer.cpp.obj: CMakeFiles/vk_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\henry\Desktop\graphics-projects\fluid-3d\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/vk_app.dir/src/renderer/renderer.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\henry\Desktop\graphics-projects\fluid-3d\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/vk_app.dir/src/renderer/renderer.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vk_app.dir/src/renderer/renderer.cpp.obj -MF CMakeFiles\vk_app.dir\src\renderer\renderer.cpp.obj.d -o CMakeFiles\vk_app.dir\src\renderer\renderer.cpp.obj -c C:\Users\henry\Desktop\graphics-projects\fluid-3d\src\renderer\renderer.cpp
 
 CMakeFiles/vk_app.dir/src/renderer/renderer.cpp.i: cmake_force
@@ -240,7 +255,7 @@ CMakeFiles/vk_app.dir/src/renderer/renderpass.cpp.obj: CMakeFiles/vk_app.dir/fla
 CMakeFiles/vk_app.dir/src/renderer/renderpass.cpp.obj: CMakeFiles/vk_app.dir/includes_CXX.rsp
 CMakeFiles/vk_app.dir/src/renderer/renderpass.cpp.obj: C:/Users/henry/Desktop/graphics-projects/fluid-3d/src/renderer/renderpass.cpp
 CMakeFiles/vk_app.dir/src/renderer/renderpass.cpp.obj: CMakeFiles/vk_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\henry\Desktop\graphics-projects\fluid-3d\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/vk_app.dir/src/renderer/renderpass.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\henry\Desktop\graphics-projects\fluid-3d\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/vk_app.dir/src/renderer/renderpass.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vk_app.dir/src/renderer/renderpass.cpp.obj -MF CMakeFiles\vk_app.dir\src\renderer\renderpass.cpp.obj.d -o CMakeFiles\vk_app.dir\src\renderer\renderpass.cpp.obj -c C:\Users\henry\Desktop\graphics-projects\fluid-3d\src\renderer\renderpass.cpp
 
 CMakeFiles/vk_app.dir/src/renderer/renderpass.cpp.i: cmake_force
@@ -255,7 +270,7 @@ CMakeFiles/vk_app.dir/src/renderer/graphics_pipeline.cpp.obj: CMakeFiles/vk_app.
 CMakeFiles/vk_app.dir/src/renderer/graphics_pipeline.cpp.obj: CMakeFiles/vk_app.dir/includes_CXX.rsp
 CMakeFiles/vk_app.dir/src/renderer/graphics_pipeline.cpp.obj: C:/Users/henry/Desktop/graphics-projects/fluid-3d/src/renderer/graphics_pipeline.cpp
 CMakeFiles/vk_app.dir/src/renderer/graphics_pipeline.cpp.obj: CMakeFiles/vk_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\henry\Desktop\graphics-projects\fluid-3d\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/vk_app.dir/src/renderer/graphics_pipeline.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\henry\Desktop\graphics-projects\fluid-3d\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/vk_app.dir/src/renderer/graphics_pipeline.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vk_app.dir/src/renderer/graphics_pipeline.cpp.obj -MF CMakeFiles\vk_app.dir\src\renderer\graphics_pipeline.cpp.obj.d -o CMakeFiles\vk_app.dir\src\renderer\graphics_pipeline.cpp.obj -c C:\Users\henry\Desktop\graphics-projects\fluid-3d\src\renderer\graphics_pipeline.cpp
 
 CMakeFiles/vk_app.dir/src/renderer/graphics_pipeline.cpp.i: cmake_force
@@ -270,7 +285,7 @@ CMakeFiles/vk_app.dir/src/renderer/compute_pipeline.cpp.obj: CMakeFiles/vk_app.d
 CMakeFiles/vk_app.dir/src/renderer/compute_pipeline.cpp.obj: CMakeFiles/vk_app.dir/includes_CXX.rsp
 CMakeFiles/vk_app.dir/src/renderer/compute_pipeline.cpp.obj: C:/Users/henry/Desktop/graphics-projects/fluid-3d/src/renderer/compute_pipeline.cpp
 CMakeFiles/vk_app.dir/src/renderer/compute_pipeline.cpp.obj: CMakeFiles/vk_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\henry\Desktop\graphics-projects\fluid-3d\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/vk_app.dir/src/renderer/compute_pipeline.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\henry\Desktop\graphics-projects\fluid-3d\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/vk_app.dir/src/renderer/compute_pipeline.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vk_app.dir/src/renderer/compute_pipeline.cpp.obj -MF CMakeFiles\vk_app.dir\src\renderer\compute_pipeline.cpp.obj.d -o CMakeFiles\vk_app.dir\src\renderer\compute_pipeline.cpp.obj -c C:\Users\henry\Desktop\graphics-projects\fluid-3d\src\renderer\compute_pipeline.cpp
 
 CMakeFiles/vk_app.dir/src/renderer/compute_pipeline.cpp.i: cmake_force
@@ -285,7 +300,7 @@ CMakeFiles/vk_app.dir/src/renderer/pipelines.cpp.obj: CMakeFiles/vk_app.dir/flag
 CMakeFiles/vk_app.dir/src/renderer/pipelines.cpp.obj: CMakeFiles/vk_app.dir/includes_CXX.rsp
 CMakeFiles/vk_app.dir/src/renderer/pipelines.cpp.obj: C:/Users/henry/Desktop/graphics-projects/fluid-3d/src/renderer/pipelines.cpp
 CMakeFiles/vk_app.dir/src/renderer/pipelines.cpp.obj: CMakeFiles/vk_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\henry\Desktop\graphics-projects\fluid-3d\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/vk_app.dir/src/renderer/pipelines.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\henry\Desktop\graphics-projects\fluid-3d\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/vk_app.dir/src/renderer/pipelines.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vk_app.dir/src/renderer/pipelines.cpp.obj -MF CMakeFiles\vk_app.dir\src\renderer\pipelines.cpp.obj.d -o CMakeFiles\vk_app.dir\src\renderer\pipelines.cpp.obj -c C:\Users\henry\Desktop\graphics-projects\fluid-3d\src\renderer\pipelines.cpp
 
 CMakeFiles/vk_app.dir/src/renderer/pipelines.cpp.i: cmake_force
@@ -300,7 +315,7 @@ CMakeFiles/vk_app.dir/src/renderer/framebuffers.cpp.obj: CMakeFiles/vk_app.dir/f
 CMakeFiles/vk_app.dir/src/renderer/framebuffers.cpp.obj: CMakeFiles/vk_app.dir/includes_CXX.rsp
 CMakeFiles/vk_app.dir/src/renderer/framebuffers.cpp.obj: C:/Users/henry/Desktop/graphics-projects/fluid-3d/src/renderer/framebuffers.cpp
 CMakeFiles/vk_app.dir/src/renderer/framebuffers.cpp.obj: CMakeFiles/vk_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\henry\Desktop\graphics-projects\fluid-3d\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/vk_app.dir/src/renderer/framebuffers.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\henry\Desktop\graphics-projects\fluid-3d\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/vk_app.dir/src/renderer/framebuffers.cpp.obj"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vk_app.dir/src/renderer/framebuffers.cpp.obj -MF CMakeFiles\vk_app.dir\src\renderer\framebuffers.cpp.obj.d -o CMakeFiles\vk_app.dir\src\renderer\framebuffers.cpp.obj -c C:\Users\henry\Desktop\graphics-projects\fluid-3d\src\renderer\framebuffers.cpp
 
 CMakeFiles/vk_app.dir/src/renderer/framebuffers.cpp.i: cmake_force
@@ -310,21 +325,6 @@ CMakeFiles/vk_app.dir/src/renderer/framebuffers.cpp.i: cmake_force
 CMakeFiles/vk_app.dir/src/renderer/framebuffers.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/vk_app.dir/src/renderer/framebuffers.cpp.s"
 	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\henry\Desktop\graphics-projects\fluid-3d\src\renderer\framebuffers.cpp -o CMakeFiles\vk_app.dir\src\renderer\framebuffers.cpp.s
-
-CMakeFiles/vk_app.dir/src/renderer/recorder.cpp.obj: CMakeFiles/vk_app.dir/flags.make
-CMakeFiles/vk_app.dir/src/renderer/recorder.cpp.obj: CMakeFiles/vk_app.dir/includes_CXX.rsp
-CMakeFiles/vk_app.dir/src/renderer/recorder.cpp.obj: C:/Users/henry/Desktop/graphics-projects/fluid-3d/src/renderer/recorder.cpp
-CMakeFiles/vk_app.dir/src/renderer/recorder.cpp.obj: CMakeFiles/vk_app.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\henry\Desktop\graphics-projects\fluid-3d\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/vk_app.dir/src/renderer/recorder.cpp.obj"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/vk_app.dir/src/renderer/recorder.cpp.obj -MF CMakeFiles\vk_app.dir\src\renderer\recorder.cpp.obj.d -o CMakeFiles\vk_app.dir\src\renderer\recorder.cpp.obj -c C:\Users\henry\Desktop\graphics-projects\fluid-3d\src\renderer\recorder.cpp
-
-CMakeFiles/vk_app.dir/src/renderer/recorder.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/vk_app.dir/src/renderer/recorder.cpp.i"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\henry\Desktop\graphics-projects\fluid-3d\src\renderer\recorder.cpp > CMakeFiles\vk_app.dir\src\renderer\recorder.cpp.i
-
-CMakeFiles/vk_app.dir/src/renderer/recorder.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/vk_app.dir/src/renderer/recorder.cpp.s"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\henry\Desktop\graphics-projects\fluid-3d\src\renderer\recorder.cpp -o CMakeFiles\vk_app.dir\src\renderer\recorder.cpp.s
 
 CMakeFiles/vk_app.dir/src/renderer/syncer.cpp.obj: CMakeFiles/vk_app.dir/flags.make
 CMakeFiles/vk_app.dir/src/renderer/syncer.cpp.obj: CMakeFiles/vk_app.dir/includes_CXX.rsp
@@ -352,6 +352,7 @@ vk_app_OBJECTS = \
 "CMakeFiles/vk_app.dir/src/engine/buffers.cpp.obj" \
 "CMakeFiles/vk_app.dir/src/engine/descriptors.cpp.obj" \
 "CMakeFiles/vk_app.dir/src/engine/resources.cpp.obj" \
+"CMakeFiles/vk_app.dir/src/engine/recorder.cpp.obj" \
 "CMakeFiles/vk_app.dir/src/engine/engine.cpp.obj" \
 "CMakeFiles/vk_app.dir/src/renderer/renderer.cpp.obj" \
 "CMakeFiles/vk_app.dir/src/renderer/renderpass.cpp.obj" \
@@ -359,7 +360,6 @@ vk_app_OBJECTS = \
 "CMakeFiles/vk_app.dir/src/renderer/compute_pipeline.cpp.obj" \
 "CMakeFiles/vk_app.dir/src/renderer/pipelines.cpp.obj" \
 "CMakeFiles/vk_app.dir/src/renderer/framebuffers.cpp.obj" \
-"CMakeFiles/vk_app.dir/src/renderer/recorder.cpp.obj" \
 "CMakeFiles/vk_app.dir/src/renderer/syncer.cpp.obj"
 
 # External object files for target vk_app
@@ -374,6 +374,7 @@ vk_app.exe: CMakeFiles/vk_app.dir/src/engine/images.cpp.obj
 vk_app.exe: CMakeFiles/vk_app.dir/src/engine/buffers.cpp.obj
 vk_app.exe: CMakeFiles/vk_app.dir/src/engine/descriptors.cpp.obj
 vk_app.exe: CMakeFiles/vk_app.dir/src/engine/resources.cpp.obj
+vk_app.exe: CMakeFiles/vk_app.dir/src/engine/recorder.cpp.obj
 vk_app.exe: CMakeFiles/vk_app.dir/src/engine/engine.cpp.obj
 vk_app.exe: CMakeFiles/vk_app.dir/src/renderer/renderer.cpp.obj
 vk_app.exe: CMakeFiles/vk_app.dir/src/renderer/renderpass.cpp.obj
@@ -381,7 +382,6 @@ vk_app.exe: CMakeFiles/vk_app.dir/src/renderer/graphics_pipeline.cpp.obj
 vk_app.exe: CMakeFiles/vk_app.dir/src/renderer/compute_pipeline.cpp.obj
 vk_app.exe: CMakeFiles/vk_app.dir/src/renderer/pipelines.cpp.obj
 vk_app.exe: CMakeFiles/vk_app.dir/src/renderer/framebuffers.cpp.obj
-vk_app.exe: CMakeFiles/vk_app.dir/src/renderer/recorder.cpp.obj
 vk_app.exe: CMakeFiles/vk_app.dir/src/renderer/syncer.cpp.obj
 vk_app.exe: CMakeFiles/vk_app.dir/build.make
 vk_app.exe: C:/VulkanSDK/1.4.357.0/Lib/vulkan-1.lib

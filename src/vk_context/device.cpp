@@ -25,10 +25,13 @@ void Device::createWindow(int &width, int &height) {
     }
 
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API); // necessary to use Vulkan
-    // for now, set width=height=800
-    width = 800;
-    height = 800;
-    window = glfwCreateWindow(800, 800, "Window", NULL, NULL);
+    
+    GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+    const GLFWvidmode *mode = glfwGetVideoMode(monitor);
+    width = mode->width;
+    height = mode->height;
+    glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
+    window = glfwCreateWindow(width, height, "Window", NULL, NULL); // set first NULL to monitor if i want fullscreen
     if (!window) {
         printf("Failed to create GLFW window\n");
         exit(1);

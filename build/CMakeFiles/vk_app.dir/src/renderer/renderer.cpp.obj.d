@@ -187,15 +187,14 @@ CMakeFiles/vk_app.dir/src/renderer/renderer.cpp.obj: \
  C:/msys64/ucrt64/include/c++/16.1.0/bits/vector.tcc \
  C:/Users/henry/Desktop/graphics-projects/fluid-3d/src/vk_context/command_pool.hpp \
  C:\Users\henry\Desktop\graphics-projects\fluid-3d\src\renderer\renderpass.hpp \
+ C:\Users\henry\Desktop\graphics-projects\fluid-3d\src\renderer\pipelines.hpp \
  C:\Users\henry\Desktop\graphics-projects\fluid-3d\src\renderer\graphics_pipeline.hpp \
  C:/Users/henry/Desktop/graphics-projects/fluid-3d/src/engine/descriptors.hpp \
  C:/Users/henry/Desktop/graphics-projects/fluid-3d/src/engine/buffers.hpp \
  C:/Users/henry/Desktop/graphics-projects/fluid-3d/src/engine/images.hpp \
  C:/Users/henry/Desktop/graphics-projects/fluid-3d/src/engine/resources.hpp \
  C:/msys64/ucrt64/include/assert.h \
- C:\Users\henry\Desktop\graphics-projects\fluid-3d\src\renderer\pipelines.hpp \
  C:\Users\henry\Desktop\graphics-projects\fluid-3d\src\renderer\compute_pipeline.hpp \
  C:\Users\henry\Desktop\graphics-projects\fluid-3d\src\renderer\framebuffers.hpp \
- C:\Users\henry\Desktop\graphics-projects\fluid-3d\src\renderer\recorder.hpp \
- C:/Users/henry/Desktop/graphics-projects/fluid-3d/src/engine/resources.hpp \
+ C:/Users/henry/Desktop/graphics-projects/fluid-3d/src/engine/recorder.hpp \
  C:\Users\henry\Desktop\graphics-projects\fluid-3d\src\renderer\syncer.hpp

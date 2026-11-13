@@ -19,6 +19,7 @@ add_executable(vk_app
     src/engine/buffers.cpp
     src/engine/descriptors.cpp
     src/engine/resources.cpp
+    src/engine/recorder.cpp
     src/engine/engine.cpp
 
     src/renderer/renderer.cpp
@@ -27,7 +28,6 @@ add_executable(vk_app
     src/renderer/compute_pipeline.cpp
     src/renderer/pipelines.cpp
     src/renderer/framebuffers.cpp
-    src/renderer/recorder.cpp
     src/renderer/syncer.cpp
 )
 

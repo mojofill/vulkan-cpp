@@ -1,7 +1,8 @@
 #include "renderer.hpp"
 
-void Renderer::init(VulkanContext *vko, Buffers *buffers, Images *images, Descriptors *descriptors, Resources *resources) {
+void Renderer::init(VulkanContext *vko, Buffers *buffers, Images *images, Descriptors *descriptors, Resources *resources, Recorder *recorder) {
    this->vko = vko;
+   this->recorder = recorder;
 
     // these are all ok
     renderPass.init(vko);
@@ -9,13 +10,12 @@ void Renderer::init(VulkanContext *vko, Buffers *buffers, Images *images, Descri
     pipelines.createGraphicsPipeline(descriptors, &renderPass, &pipelines.graphicsPipeline, &pipelines.graphicsPipelineLayout, "./src/assets/spvs/vert.spv", "./src/assets/spvs/frag.spv");
     pipelines.createComputePipeline(descriptors, &pipelines.computePipeline, &pipelines.computePipelineLayout, "./src/assets/spvs/comp.spv");
     framebuffers.init(vko, &renderPass);
-    recorder.init(vko, images, descriptors, resources, &renderPass, &pipelines, &framebuffers, buffers);
     syncer.init(vko);
+    recorder->init(vko, images, descriptors, resources, &renderPass, &pipelines, &framebuffers, buffers);
 }
 
 void Renderer::destroy() {
     syncer.destroy();
-    recorder.destroy();
     framebuffers.destroy();
     pipelines.destroy();
     renderPass.destroy();
@@ -43,7 +43,7 @@ void Renderer::draw(uint32_t *currentFrame) {
     // if i were recording every frame, i would need to 1. vkResetCommandBuffer(commandBuffer, 0); to clear command buffer and 2. recordCommandBuffer(commandBuffer, imageIndex);
     // but since everything is pre recorded, i dont need to
 
-    recorder.recordCommands(*currentFrame);
+    recorder->recordCommands(*currentFrame);
 
     // submit commands to queue
     VkSubmitInfo submitInfo{};
@@ -51,7 +51,7 @@ void Renderer::draw(uint32_t *currentFrame) {
     VkPipelineStageFlags waitStages[] = {VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT}; // first stage synced first semaphore.
     submitInfo.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
     submitInfo.commandBufferCount = 1;
-    submitInfo.pCommandBuffers = &recorder.commandBuffers[imageIndex];
+    submitInfo.pCommandBuffers = &recorder->commandBuffers[imageIndex];
     submitInfo.waitSemaphoreCount = 1;
     submitInfo.pWaitSemaphores = &syncer.imageAvailableSemaphores[*currentFrame]; // wait for imageAvailable semaphore to signal done before rendering
     submitInfo.pWaitDstStageMask = waitStages; // pipeline stages are synced with wait semaphores - doesnt continue onto stage until wait semaphore signals done
@@ -80,8 +80,8 @@ void Renderer::draw(uint32_t *currentFrame) {
         vko->swapchain.recreateSwapchain();
         framebuffers.createFramebuffers();
         // rerecord command buffers
-        recorder.resetCommands();
-        recorder.recordCommands(*currentFrame);
+        recorder->resetCommands();
+        recorder->recordCommands(*currentFrame);
     } else if (result != VK_SUCCESS) {
         printf("Failed to present swapchain image!\n");
         exit(1);

@@ -12,7 +12,7 @@ void Engine::init(VulkanContext *vko) {
     resources.createStorageImage(vko->width, vko->height);
 
     descriptors.init(vko, &buffers, &images, &resources);
-    renderer.init(vko, &buffers, &images, &descriptors, &resources);
+    renderer.init(vko, &buffers, &images, &descriptors, &resources, &recorder);
 }
 
 void Engine::destroy() {
@@ -25,13 +25,16 @@ void Engine::destroy() {
 
 void Engine::mainLoop() {
     uint32_t currentFrame = 0;
+    uint32_t frameCount = 0;
     while (!glfwWindowShouldClose(vko->device.window)) {
         glfwPollEvents();
         if (glfwGetKey(vko->device.window, GLFW_KEY_ESCAPE)) {
             glfwSetWindowShouldClose(vko->device.window, VK_TRUE);
         }
-        // i gotta port command recording from renderer (recorder - should be able to just delete the recorder) to engine (simulation)
-        // can update uniforms and such here
+        // upload the uniform buffer
+        UniformBufferObject uni {.frameCount = frameCount};
+        memcpy(buffers.uniformBuffersMapped[currentFrame], &uni, sizeof(uni));
+        frameCount++;
         renderer.draw(&currentFrame);
     }
 }

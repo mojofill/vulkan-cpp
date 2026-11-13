@@ -6,7 +6,7 @@
 #include "resources.hpp"
 
 typedef struct UniformBufferObject {
-    float angle;
+    uint32_t frameCount;
 } UniformBufferObject;
 
 class Descriptors {
@@ -15,9 +15,29 @@ private:
     Buffers *buffers;
     Images *images;
     Resources *resources;
-    void createDescriptorSetLayout();
+    void addDescriptorSetLayoutBinding(
+        std::vector<VkDescriptorSetLayoutBinding> &bindings,
+        std::vector<VkDescriptorPoolSize> &poolSizes,
+        uint32_t binding,
+        VkDescriptorType descriptorType,
+        VkShaderStageFlags stageFlags
+    );
+    void addWriteBufferDescriptorSet(
+        std::vector<VkWriteDescriptorSet> &desciptorWrites,
+        VkDescriptorSet descriptorSet,
+        uint32_t dstBinding,
+        VkDescriptorType descriptorType,
+        VkDescriptorBufferInfo *pBufferInfo
+    );
+    void addWriteImageDescriptorSet(
+        std::vector<VkWriteDescriptorSet> &descriptorWrites,
+        VkDescriptorSet descriptorSet,
+        uint32_t dstBinding,
+        VkDescriptorType descriptorType,
+        VkDescriptorImageInfo *pImageInfo
+    );
+    void createDescriptorSetResources();
     void createUniformBuffer();
-    void createDescriptorPool();
     void createDescriptorSets();
 public:
     VkDescriptorSetLayout descriptorSetLayout;

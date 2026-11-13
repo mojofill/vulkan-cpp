@@ -1,13 +1,13 @@
 #pragma once
 
 #include "../vk_context/vk_context.hpp"
-#include "../engine/buffers.hpp"
-#include "../engine/images.hpp"
-#include "../engine/descriptors.hpp"
-#include "../engine/resources.hpp"
-#include "renderpass.hpp"
-#include "pipelines.hpp"
-#include "framebuffers.hpp"
+#include "buffers.hpp"
+#include "images.hpp"
+#include "descriptors.hpp"
+#include "resources.hpp"
+#include "../renderer/renderpass.hpp"
+#include "../renderer/pipelines.hpp"
+#include "../renderer/framebuffers.hpp"
 
 class Recorder {
 private:
@@ -38,6 +38,10 @@ public:
     );
     void destroy();
 
+    // compute shader functions
+    void testComputeShader(uint32_t currentFrame, uint32_t i);
+
+    void drawStorageImage(uint32_t currentFrame, uint32_t i);
     void recordCommands(uint32_t currentFrame);
     void resetCommands();
 };
