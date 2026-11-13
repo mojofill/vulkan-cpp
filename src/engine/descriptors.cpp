@@ -1,16 +1,19 @@
 #include "descriptors.hpp"
 
 void Descriptors::destroy() {
-    vkDestroyDescriptorPool(device->device, descriptorPool, NULL);
-    vkDestroyDescriptorSetLayout(device->device, descriptorSetLayout, NULL);
+    vkDestroyDescriptorPool(vko->device.device, descriptorPool, NULL);
+    vkDestroyDescriptorSetLayout(vko->device.device, descriptorSetLayout, NULL);
 }
 
-void Descriptors::init(Device *device, Images &images) {
-    this->device = device;
+void Descriptors::init(VulkanContext *vko, Buffers *buffers, Images *images, Resources *resources) {
+    this->vko = vko;
+    this->buffers = buffers;
+    this->images = images;
+    this->resources = resources;
     createUniformBuffer();
     createDescriptorSetLayout();
     createDescriptorPool();
-    createDescriptorSets(images);
+    createDescriptorSets();
 }
 
 void Descriptors::createDescriptorSetLayout() {
@@ -33,7 +36,7 @@ void Descriptors::createDescriptorSetLayout() {
     layoutInfo.pBindings = bindings;
     layoutInfo.bindingCount = 2;
 
-    if (vkCreateDescriptorSetLayout(device->device, &layoutInfo, NULL, &descriptorSetLayout) != VK_SUCCESS) {
+    if (vkCreateDescriptorSetLayout(vko->device.device, &layoutInfo, NULL, &descriptorSetLayout) != VK_SUCCESS) {
         printf("Failed to create descriptor set layout\n");
         exit(1);
     }
@@ -44,8 +47,8 @@ void Descriptors::createUniformBuffer() {
     
     // create one for each image in flight (ie uniform buffer count)
     for (int i = 0; i < 2; i++) {
-        Buffers::createBuffer(device, bufferSize, VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, &uniformBuffers[i], &uniformBufferMemories[i]);
-        vkMapMemory(device->device, uniformBufferMemories[i], 0, bufferSize, 0, &uniformBuffersMapped[i]);
+        buffers->createBuffer(bufferSize, VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, &buffers->uniformBuffers[i], &buffers->uniformBufferMemories[i]);
+        vkMapMemory(vko->device.device, buffers->uniformBufferMemories[i], 0, bufferSize, 0, &buffers->uniformBuffersMapped[i]);
     }
 }
 
@@ -64,13 +67,13 @@ void Descriptors::createDescriptorPool() {
     poolInfo.pPoolSizes = poolSizes;
     poolInfo.maxSets = 2;
 
-    if (vkCreateDescriptorPool(device->device, &poolInfo, NULL, &descriptorPool) != VK_SUCCESS) {
+    if (vkCreateDescriptorPool(vko->device.device, &poolInfo, NULL, &descriptorPool) != VK_SUCCESS) {
         printf("failed to create descriptor pool\n");
         exit(1);
     }
 }
 
-void Descriptors::createDescriptorSets(Images &images) {
+void Descriptors::createDescriptorSets() {
     VkDescriptorSetAllocateInfo allocInfo{};
 
     // need identical layouts for both descriptor sets
@@ -82,7 +85,7 @@ void Descriptors::createDescriptorSets(Images &images) {
     allocInfo.descriptorSetCount = (uint32_t) 2;
     allocInfo.pSetLayouts = layouts;
 
-    if (vkAllocateDescriptorSets(device->device, &allocInfo, descriptorSets) != VK_SUCCESS) {
+    if (vkAllocateDescriptorSets(vko->device.device, &allocInfo, descriptorSets) != VK_SUCCESS) {
         fprintf(stderr, "Failed to create descriptor sets\n");
         exit(1);
     }
@@ -91,14 +94,14 @@ void Descriptors::createDescriptorSets(Images &images) {
     for (int i = 0; i < 2; i++) {
         // add buffer to descriptor set
         VkDescriptorBufferInfo bufferInfo = {0};
-        bufferInfo.buffer = uniformBuffers[i];
+        bufferInfo.buffer = buffers->uniformBuffers[i];
         bufferInfo.offset = 0;
         bufferInfo.range = sizeof(UniformBufferObject);
 
         VkDescriptorImageInfo imageInfo = {0};
         imageInfo.imageLayout = VK_IMAGE_LAYOUT_GENERAL; // doesnt matter what layout, so set it to be general layout
-        imageInfo.imageView = images.storageImageView;
-        imageInfo.sampler = images.storageSampler;
+        imageInfo.imageView = resources->storageImageView;
+        imageInfo.sampler = resources->storageSampler;
 
         // write to descriptor set
         VkWriteDescriptorSet descriptorWrites[2]{}; // can add more descriptor sets if necessary
@@ -120,6 +123,6 @@ void Descriptors::createDescriptorSets(Images &images) {
         descriptorWrites[1].descriptorCount = 1;
         descriptorWrites[1].pImageInfo = &imageInfo;
 
-        vkUpdateDescriptorSets(device->device, 2, descriptorWrites, 0, NULL);
+        vkUpdateDescriptorSets(vko->device.device, 2, descriptorWrites, 0, NULL);
     }
 }

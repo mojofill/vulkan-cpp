@@ -1,41 +1,22 @@
-#ifndef VK_ENGINE_H
-#define VK_ENGINE_H
+#pragma once
 
-#include "vgfx.hpp"
-#include "device.hpp"
-#include "buffers.hpp"
-#include "swapchain.hpp"
-#include "command_pool.hpp"
+#include "../vk_context/vk_context.hpp"
 #include "descriptors.hpp"
-#include "renderpass.hpp"
+#include "buffers.hpp"
 #include "images.hpp"
-#include "graphics_pipeline.hpp"
-#include "pipelines.hpp"
-#include "framebuffers.hpp"
-#include "recorder.hpp"
-#include "syncer.hpp"
+#include "resources.hpp"
+#include "../renderer/renderer.hpp"
 
 class Engine {
 private:
-	int width;
-	int height;
-	Device device;
-	Swapchain swapchain;
-	CommandPool commandPool;
-	Images images;
-	Descriptors descriptors;
-	RenderPass renderPass;
-	Pipelines pipelines;
-	Framebuffers framebuffers;
-	Buffers buffers;
-	Recorder recorder;
-	Syncer syncer;
+    VulkanContext *vko;
+    Buffers buffers;
+    Images images;
+    Resources resources;
+    Descriptors descriptors;
+    Renderer renderer;
 public:
-    void init();
-	void cleanup();
-	void mainLoop();
-	void draw(uint32_t *currentFrame);
-	void run();
+    void init(VulkanContext *vko);
+    void mainLoop();
+    void destroy();
 };
-
-#endif

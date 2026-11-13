@@ -1,34 +1,18 @@
 #include "images.hpp"
 
-void Images::init(Device *device, CommandPool *commandPool, int width, int height) {
-    this->device = device;
-
-    createImage( // create storage image for a fullscreen quad
-        device,
-        commandPool,
-        width,
-        height,
-        VK_FORMAT_R32G32B32A32_SFLOAT,
-        VK_IMAGE_TILING_OPTIMAL,
-        VK_IMAGE_USAGE_STORAGE_BIT | VK_IMAGE_USAGE_SAMPLED_BIT,
-        VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT,
-        &storageImage, &storageImageMemory
-    );
-    createImageView(device, storageImage, VK_FORMAT_R32G32B32A32_SFLOAT, VK_IMAGE_ASPECT_COLOR_BIT, &storageImageView);
-    createSampler(device, &storageSampler);
+void Images::init(VulkanContext *vko) {
+    this->vko = vko;
 }
 
 void Images::destroy() {
-    vkDestroyImage(device->device, storageImage, NULL);
-    vkDestroyImageView(device->device, storageImageView, NULL);
-    vkDestroySampler(device->device, storageSampler, NULL);
-    vkFreeMemory(device->device, storageImageMemory, NULL);
+    // nothing to do for now
 }
 
 void Images::createImage(
-    Device *device,
-    CommandPool *commandPool,
-    uint32_t width, uint32_t height,
+    VkImageType imageType,
+    uint32_t width,
+    uint32_t length,
+    uint32_t height,
     VkFormat format,
     VkImageTiling tiling,
     VkImageUsageFlags usage,
@@ -38,10 +22,10 @@ void Images::createImage(
 ) {
     VkImageCreateInfo imageInfo{};
     imageInfo.sType = VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO;
-    imageInfo.imageType = VK_IMAGE_TYPE_2D;
+    imageInfo.imageType = imageType;
     imageInfo.extent.width = (uint32_t) width;
-    imageInfo.extent.height = (uint32_t) height;
-    imageInfo.extent.depth = 1; // 2d image thus just one z depth layer
+    imageInfo.extent.height = (uint32_t) length;
+    imageInfo.extent.depth = (uint32_t) height; // 2d image thus just one z depth layer
     imageInfo.mipLevels = 1;
     imageInfo.arrayLayers = 1;
     imageInfo.format = format;
@@ -50,33 +34,33 @@ void Images::createImage(
     imageInfo.usage = usage; // dst = destination during transfer, sampled bit = will be sampled by shader
     imageInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
     imageInfo.samples = VK_SAMPLE_COUNT_1_BIT; // only relevant for attachments (ie swapchain -> framebuffer -> render pass attachments, not relevant for texture images)
-
-    if (vkCreateImage(device->device, &imageInfo, NULL, image) != VK_SUCCESS) {
+    
+    if (vkCreateImage(vko->device.device, &imageInfo, NULL, image) != VK_SUCCESS) {
         fprintf(stderr, "Failed to create image\n");
         exit(1);
     }
 
     // allocate space for image
     VkMemoryRequirements memRequirements;
-    vkGetImageMemoryRequirements(device->device, *image, &memRequirements);
+    vkGetImageMemoryRequirements(vko->device.device, *image, &memRequirements);
 
     VkMemoryAllocateInfo allocInfo{};
     allocInfo.sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO;
     allocInfo.allocationSize = memRequirements.size;
-    allocInfo.memoryTypeIndex = Buffers::findMemoryType(device, memRequirements.memoryTypeBits, properties);
+    allocInfo.memoryTypeIndex = Buffers::findMemoryType(&vko->device, memRequirements.memoryTypeBits, properties);
 
-    if (vkAllocateMemory(device->device, &allocInfo, NULL, imageMemory) != VK_SUCCESS) {
+    if (vkAllocateMemory(vko->device.device, &allocInfo, NULL, imageMemory) != VK_SUCCESS) {
         fprintf(stderr, "Failed to allocate memory for texture image\n");
         exit(1);
     }
 
-    vkBindImageMemory(device->device, *image, *imageMemory, 0);
+    vkBindImageMemory(vko->device.device, *image, *imageMemory, 0);
 
     // now must transition image layout to general
-    transitionImageLayout(device, commandPool, *image, format, VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_GENERAL);
+    transitionImageLayout(*image, format, VK_IMAGE_LAYOUT_UNDEFINED, VK_IMAGE_LAYOUT_GENERAL);
 }
 
-void Images::createImageView(Device *device, VkImage image, VkFormat format, VkImageAspectFlags aspectFlags, VkImageView *imageView) {
+void Images::createImageView(VkImage image, VkFormat format, VkImageAspectFlags aspectFlags, VkImageView *imageView) {
     VkImageViewCreateInfo viewInfo{};
     viewInfo.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
     viewInfo.image = image;
@@ -92,13 +76,13 @@ void Images::createImageView(Device *device, VkImage image, VkFormat format, VkI
     viewInfo.subresourceRange.levelCount = 1;
     viewInfo.subresourceRange.baseMipLevel = 0;
 
-    if (vkCreateImageView(device->device, &viewInfo, NULL, imageView) != VK_SUCCESS) {
+    if (vkCreateImageView(vko->device.device, &viewInfo, NULL, imageView) != VK_SUCCESS) {
         fprintf(stderr, "Failed to create image view\n");
         exit(1);
     }
 }
 
-void Images::createSampler(Device *device, VkSampler *pSampler) {
+void Images::createSampler(VkSampler *pSampler) {
     VkSamplerCreateInfo samplerInfo{};
     samplerInfo.sType = VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO;
     samplerInfo.magFilter = VK_FILTER_NEAREST; // no interpolation (no blurring)
@@ -127,15 +111,15 @@ void Images::createSampler(Device *device, VkSampler *pSampler) {
     samplerInfo.minLod = 0.0f;
     samplerInfo.maxLod = 0.0f;
 
-    if (vkCreateSampler(device->device, &samplerInfo, NULL, pSampler) != VK_SUCCESS) {
+    if (vkCreateSampler(vko->device.device, &samplerInfo, NULL, pSampler) != VK_SUCCESS) {
         printf("Failed to create texture image sampler\n");
         exit(1);
     }
 }
 
 // must transition image layout to be suitable for gpu device memory manipulation
-void Images::transitionImageLayout(Device *device, CommandPool *commandPool, VkImage image, VkFormat format, VkImageLayout oldLayout, VkImageLayout newLayout) {
-    VkCommandBuffer commandBuffer = beginSingleTimeCommand(device, commandPool);
+void Images::transitionImageLayout(VkImage image, VkFormat format, VkImageLayout oldLayout, VkImageLayout newLayout) {
+    VkCommandBuffer commandBuffer = vko->beginSingleTimeCommand();
     
     VkImageMemoryBarrier barrier{}; // must synchronize image resource sharing. make pipeline wait until image memory is fully transitioned via an image memory barrier
     barrier.sType = VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER;
@@ -207,5 +191,5 @@ void Images::transitionImageLayout(Device *device, CommandPool *commandPool, VkI
         1, &barrier
     );
 
-    endSingleTimeCommand(device, commandPool, commandBuffer);
+    vko->endSingleTimeCommand(commandBuffer);
 }

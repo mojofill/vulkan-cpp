@@ -1,20 +1,24 @@
 #pragma once
 
-#include "vgfx.hpp"
-#include "device.hpp"
-#include "command_pool.hpp"
+#include "../vk_context/vk_context.hpp"
 
 class Buffers {
 private:
-    Device *device;
+    VulkanContext *vko;
 public:
+    VkBuffer uniformBuffers[2];
+    VkDeviceMemory uniformBufferMemories[2];
+    void *uniformBuffersMapped[2];
+
+    uint32_t vertexCount;
     VkBuffer vertexBuffer;
     VkDeviceMemory vertexBufferMemory;
 
-    void init(Device *device, CommandPool *commandPool);
+    void init(VulkanContext *vko);
     void destroy();
 
+    void createBuffer(VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags properties, VkBuffer *pBuffer, VkDeviceMemory *pBufferMemory);
+    void copyBuffer(VkBuffer srcBuffer, VkBuffer dstBuffer, VkDeviceSize size);
+
     static uint32_t findMemoryType(Device *device, uint32_t typeFilter, VkMemoryPropertyFlags properties);
-    static void createBuffer(Device *device, VkDeviceSize size, VkBufferUsageFlags usage, VkMemoryPropertyFlags properties, VkBuffer *pBuffer, VkDeviceMemory *pBufferMemory);
-    static void copyBuffer(Device *device, CommandPool *commandPool, VkBuffer srcBuffer, VkBuffer dstBuffer, VkDeviceSize size);
 };

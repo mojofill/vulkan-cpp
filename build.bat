@@ -2,9 +2,9 @@
 
 echo Compiling shaders ...
 
-slangc src\shaders\vert.slang -target spirv -profile spirv_1_5 -entry main -stage vertex -o src\spvs\vert.spv
-slangc src\shaders\frag.slang -target spirv -profile spirv_1_5 -entry main -stage fragment -o src\spvs\frag.spv
-slangc src\shaders\comp.slang -target spirv -profile spirv_1_5 -entry main -stage compute -o src\spvs\comp.spv
+slangc src\assets\shaders\vert.slang -target spirv -profile spirv_1_5 -entry main -stage vertex -o src\assets\spvs\vert.spv
+slangc src\assets\shaders\frag.slang -target spirv -profile spirv_1_5 -entry main -stage fragment -o src\assets\spvs\frag.spv
+slangc src\assets\shaders\comp.slang -target spirv -profile spirv_1_5 -entry main -stage compute -o src\assets\spvs\comp.spv
 
 echo Configuring CMake...
 cmake -S . -B build ^

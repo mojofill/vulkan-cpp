@@ -9,20 +9,26 @@ find_package(glfw3 CONFIG REQUIRED)
 
 add_executable(vk_app
     src/main.cpp
-    src/engine/engine.cpp
-    src/engine/device.cpp
-    src/engine/swapchain.cpp
-    src/engine/command_pool.cpp
-    src/engine/renderpass.cpp
+
+    src/vk_context/device.cpp
+    src/vk_context/swapchain.cpp
+    src/vk_context/command_pool.cpp
+    src/vk_context/vk_context.cpp
+
     src/engine/images.cpp
     src/engine/buffers.cpp
     src/engine/descriptors.cpp
-    src/engine/graphics_pipeline.cpp
-    src/engine/compute_pipeline.cpp
-    src/engine/pipelines.cpp
-    src/engine/framebuffers.cpp
-    src/engine/recorder.cpp
-    src/engine/syncer.cpp
+    src/engine/resources.cpp
+    src/engine/engine.cpp
+
+    src/renderer/renderer.cpp
+    src/renderer/renderpass.cpp
+    src/renderer/graphics_pipeline.cpp
+    src/renderer/compute_pipeline.cpp
+    src/renderer/pipelines.cpp
+    src/renderer/framebuffers.cpp
+    src/renderer/recorder.cpp
+    src/renderer/syncer.cpp
 )
 
 target_include_directories(vk_app PRIVATE

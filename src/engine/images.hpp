@@ -1,18 +1,16 @@
 #pragma once
 
-#include "vgfx.hpp"
-#include "device.hpp"
-#include "command_pool.hpp"
+#include "../vk_context/vk_context.hpp"
 #include "buffers.hpp"
 
 class Images {
 private:
-	Device *device;
-
-	static void createImage(
-		Device *device,
-		CommandPool *commandPool,
+	VulkanContext *vko;
+public:
+	void createImage(
+		VkImageType imageType,
 		uint32_t width,
+		uint32_t length,
 		uint32_t height,
 		VkFormat format,
 		VkImageTiling tiling,
@@ -21,28 +19,20 @@ private:
 		VkImage *image,
 		VkDeviceMemory *imageMemory
 	);
-	static void transitionImageLayout(
-		Device *device,
-		CommandPool *commandPool,
+	void transitionImageLayout(
 		VkImage image,
 		VkFormat format,
 		VkImageLayout oldLayout,
 		VkImageLayout newLayout
 	);
-	static void createImageView(
-		Device *device,
+	void createImageView(
 		VkImage image,
 		VkFormat format,
 		VkImageAspectFlags aspectFlags,
 		VkImageView *imageView
 	);
-	static void createSampler(Device *device, VkSampler *pSampler);
-public:
-	VkImage storageImage;
-	VkDeviceMemory storageImageMemory;
-	VkImageView storageImageView;
-	VkSampler storageSampler;
+	void createSampler(VkSampler *pSampler);
 
-	void init(Device *device, CommandPool *commandPool, int width, int height);
+	void init(VulkanContext *vko);
 	void destroy();
 };

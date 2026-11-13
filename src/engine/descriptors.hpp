@@ -1,9 +1,9 @@
 #pragma once
 
-#include "vgfx.hpp"
-#include "device.hpp"
+#include "../vk_context/vk_context.hpp"
 #include "buffers.hpp"
 #include "images.hpp"
+#include "resources.hpp"
 
 typedef struct UniformBufferObject {
     float angle;
@@ -11,19 +11,18 @@ typedef struct UniformBufferObject {
 
 class Descriptors {
 private:
-    // maybe dont need this if uniform buffers are only constants
-    VkBuffer uniformBuffers[2];
-    VkDeviceMemory uniformBufferMemories[2];
-    Device *device;
-    void *uniformBuffersMapped[2];
+    VulkanContext *vko;
+    Buffers *buffers;
+    Images *images;
+    Resources *resources;
     void createDescriptorSetLayout();
     void createUniformBuffer();
     void createDescriptorPool();
-    void createDescriptorSets(Images &images);
+    void createDescriptorSets();
 public:
     VkDescriptorSetLayout descriptorSetLayout;
     VkDescriptorPool descriptorPool;
     VkDescriptorSet descriptorSets[2];
-    void init(Device *device, Images &images);
+    void init(VulkanContext *vko, Buffers *buffers, Images *images, Resources *resources);
     void destroy();
 };
